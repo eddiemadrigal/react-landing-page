@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import BackgroundImage from "../images/bgDesktop.jpg";
+import BackgroundImage from "../images/bgDesktopLandscape.jpg";
 
 const useStyles = makeStyles((theme) => ({
  "@global": {
@@ -38,9 +38,22 @@ const useStyles = makeStyles((theme) => ({
   lineHeight: "11px",
   letterSpacing: "0.25px",
  },
- heroContent: {
+ mainContent: {
   padding: theme.spacing(8, 0, 6),
   maxWidth: 800,
+  "@media (max-width: 960px)": {
+   maxWidth: 600,
+  },
+  "@media (orientation: portrait)": {
+   marginTop: -10,
+  },
+ },
+ subContent: {
+  "@media (max-width: 600px)": {
+   maxWidth: 400,
+  },
+  marginTop: -30,
+  marginBottom: 50,
  },
  mainHeading: {
   textAlign: "center",
@@ -50,13 +63,25 @@ const useStyles = makeStyles((theme) => ({
   fontWeight: "bold",
   fontSize: 70,
   marginTop: 40,
+  "@media (max-width: 960px)": {
+   fontSize: 32,
+   marginTop: -40,
+   marginBottom: 0,
+  },
+  "@media (max-width: 600px)": {
+   fontSize: 32,
+   marginTop: 60,
+   marginBottom: 50,
+  },
  },
- subTag: {
+ subHeading: {
   textAlign: "center",
   fontFamily: "Roboto Condensed",
-  maxWidth: 350,
   margin: "0 auto",
   fontWeight: "bold",
+  "@media (min-width: 960px)": {
+   maxWidth: 400,
+  },
  },
  button: {
   backgroundColor: "#2196F3",
@@ -67,13 +92,19 @@ const useStyles = makeStyles((theme) => ({
   lineHeight: "20px",
   color: "#fff",
   padding: "15px",
+  "@media (max-width: 960px)": {
+   marginTop: -20,
+  },
+  "@media (max-width: 600px)": {
+   marginTop: 10,
+  },
  },
  butttonContainer: {
   textAlign: "center",
  },
 }));
 
-export default function LandingPage() {
+export default function DesktopPortrait() {
  const classes = useStyles();
 
  return (
@@ -94,8 +125,8 @@ export default function LandingPage() {
      </nav>
     </Toolbar>
    </AppBar>
-   {/* Hero unit */}
-   <Container component="main" className={classes.heroContent}>
+   {/* Main text */}
+   <Container component="main" className={classes.mainContent}>
     <Typography
      component="h1"
      variant="h2"
@@ -104,13 +135,16 @@ export default function LandingPage() {
     >
      Social Media Management made easy.
     </Typography>
-    <Typography component="p" className={classes.subTag}>
-     Discover how to develop your brand
-     <br />
-     and manage your digital marketing strategy
+   </Container>
+   {/* End main text */}
+   {/* Sub text */}
+   <Container className={classes.subContent}>
+    <Typography component="p" className={classes.subHeading}>
+     Discover how to develop your brand and manage your digital marketing
+     strategy
     </Typography>
    </Container>
-   {/* End hero unit */}
+   {/* End sub text */}
    <Container
     maxWidth="md"
     component="main"
